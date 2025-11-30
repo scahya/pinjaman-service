@@ -1,4 +1,4 @@
-package id.co.swamedia.core.pinjamanservice;
+package escahya.core.pinjamanservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
