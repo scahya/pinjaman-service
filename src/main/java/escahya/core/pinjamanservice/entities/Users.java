@@ -1,5 +1,6 @@
 package escahya.core.pinjamanservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,9 +28,11 @@ public class Users {
     @GeneratedValue
     private UUID id;
 
+    @JsonIgnore
     @Column(name = "username")
     private String username;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 

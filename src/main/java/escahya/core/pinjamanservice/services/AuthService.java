@@ -1,12 +1,12 @@
 package escahya.core.pinjamanservice.services;
 
 import escahya.core.pinjamanservice.config.jwt.JwtUtil;
-import escahya.core.pinjamanservice.dtos.RegisterDto;
+import escahya.core.pinjamanservice.dtos.JwtResponse;
+import escahya.core.pinjamanservice.dtos.RegisterReqDto;
 import escahya.core.pinjamanservice.entities.Users;
 import escahya.core.pinjamanservice.repositories.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 @RequiredArgsConstructor
@@ -16,19 +16,19 @@ public class AuthService {
     private final JwtUtil jwtUtil;
 
 
-    public void registerUser(@RequestBody RegisterDto registerDto) {
+    public Users registerUser(RegisterReqDto registerReqDto) {
 
         Users user = new Users();
-        user.setUsername(registerDto.getUsername());
-        user.setPassword(registerDto.getPassword());
-        user.setNamaLengkap(registerDto.getNamaLengkap());
-        user.setRole(registerDto.getRole());
+        user.setUsername(registerReqDto.getUsername());
+        user.setPassword(registerReqDto.getPassword());
+        user.setNamaLengkap(registerReqDto.getNamaLengkap());
+        user.setRole(registerReqDto.getRole());
 
-        usersRepository.save(user);
+       return usersRepository.save(user);
 
     }
 
-    public String login(String username, String password) {
+    public JwtResponse login(String username, String password) {
 
         Users user = usersRepository.findByUsername(username)
             .orElseThrow(() -> new RuntimeException("User not found"));
@@ -38,6 +38,10 @@ public class AuthService {
         }
 
         // Generate token isi username + role
-        return jwtUtil.generateToken(user.getUsername(), String.valueOf(user.getRole()));
+        JwtResponse jwtResponse = new JwtResponse();
+        jwtResponse.setRole(String.valueOf(user.getRole()));
+        jwtResponse.setToken(jwtUtil.generateToken(user.getUsername(), String.valueOf(user.getRole())));
+
+        return jwtResponse;
     }
 }

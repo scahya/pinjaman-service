@@ -63,8 +63,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
-        System.out.println("==> URI: " + request.getRequestURI());
-        System.out.println("==> Should skip: " + shouldNotFilter(request));
         filterChain.doFilter(request, response);
     }
 
