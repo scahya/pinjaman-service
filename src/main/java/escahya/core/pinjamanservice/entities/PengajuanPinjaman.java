@@ -4,8 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -31,8 +34,9 @@ public class PengajuanPinjaman {
     @Column(name = "id_nasabah")
     private UUID idNasabah;
 
-    @Column(name = "approved_by")
-    private UUID approvedBy;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "approved_by")
+    private Users approvedByUser;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -40,6 +44,9 @@ public class PengajuanPinjaman {
 
     @Column(name = "approved_at")
     private Timestamp approvedAt;
+
+    @Column(name = "nik")
+    private String nik;
 
     @Column(name = "nama_lengkap")
     private String namaLengkap;
@@ -55,7 +62,7 @@ public class PengajuanPinjaman {
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private StatusPinjaman status;
+    private StatusPinjaman status   ;
 
     @Column(name = "catatan_admin")
     private String catatanAdmin;

@@ -7,6 +7,7 @@ create table if not exists pengajuan_pinjaman
     approved_at                         timestamp(6),
     approved_by                         UUID,
     nama_lengkap                        varchar(255),
+    nik                                 varchar(255) unique ,
     alamat                              varchar(255),
     no_telpon                           varchar(255),
     jumlah_pinjaman                     bigint,
