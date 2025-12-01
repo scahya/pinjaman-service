@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "1e4ed870-f00f-4525-93c6-7eae264bdd98",
+		"name": "Pinjam seratus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46216487",
+		"_collection_link": "https://bagoes-516537.postman.co/workspace/Bagoes's-Workspace~fb89af95-b6b0-4494-84c5-45d14bcbe10a/collection/46216487-1e4ed870-f00f-4525-93c6-7eae264bdd98?action=share&source=collection_link&creator=46216487"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"nasabah\",\n    \"password\": \"nasabah\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"tis\",\n    \"password\": \"tia\",\n    \"namaLengkap\": \"tina\",\n    \"role\" : \"Nasabah\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Req Pinjam Nasabah",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTmFzYWJhaCIsInN1YiI6Im5hcyIsImlhdCI6MTc2NDU1ODM0NywiZXhwIjoxNzY0NTYxOTQ3fQ.sXdhGUZMUjISKZaff9Apfj9STsv4QxZE96zql9gbIUM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"namaLengkap\" :\"dadang\",\n    \"alamat\" :\"badung\",\n    \"noTelpon\":\"012312093\",\n    \"jumlahPinjaman\": 23123123123\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/pinjaman/ajukan",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"pinjaman",
+						"ajukan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nasabah Get All Pinjaman",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTmFzYWJhaCIsInN1YiI6Im5hc2FiYWgiLCJpYXQiOjE3NjQ1NzE0NjgsImV4cCI6MTc2NDU3NTA2OH0.1RN1eB9_rkEg2hdPa6pRz-mbtNExIL5bD9E3jysU1SI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"namaLengkap\" :\"dadang\",\n    \"alamat\" :\"badung\",\n    \"noTelpon\":\"012312093\",\n    \"jumlahPinjaman\": 23123123123\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/pinjaman/nasabah",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"pinjaman",
+						"nasabah"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin GET All Pinjaman",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQWRtaW4iLCJzdWIiOiJhZG1pbiIsImlhdCI6MTc2NDU2MTI1MCwiZXhwIjoxNzY0NTY0ODUwfQ.KsZry8Jk4R26M1hLI0kHied4a2GaF2fqGoxyJfrmbEA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"namaLengkap\" :\"dadang\",\n    \"alamat\" :\"badung\",\n    \"noTelpon\":\"012312093\",\n    \"jumlahPinjaman\": 23123123123\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/pinjaman/list",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"pinjaman",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Reject Pinjaman",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQWRtaW4iLCJzdWIiOiJhZG1pbiIsImlhdCI6MTc2NDQ3OTA1NywiZXhwIjoxNzY0NDgyNjU3fQ.hhWqCJDtIZK91cHFuIoeacdv0BuM0I_2FGTELaF6nUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"catatanAdmin\" :\"catatanAdmin\",\n    \"status\" :\"Approved\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9194/api/pinjaman/54cef31c-d2c8-476e-a743-5fea4695ccfa/approve",
+					"host": [
+						"localhost"
+					],
+					"port": "9194",
+					"path": [
+						"api",
+						"pinjaman",
+						"54cef31c-d2c8-476e-a743-5fea4695ccfa",
+						"approve"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
